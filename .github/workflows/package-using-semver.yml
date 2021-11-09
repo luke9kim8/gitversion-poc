@@ -1,5 +1,8 @@
 name: Package repository
-on: [push]
+on: 
+  push:
+    branches:
+      - main
 jobs:
   Package-repo:
     runs-on: ubuntu-latest
