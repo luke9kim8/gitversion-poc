@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - main
+      - dev
+      - 'feature/**'
 jobs:
   Package-repo:
     runs-on: ubuntu-latest
@@ -17,19 +19,25 @@ jobs:
         with:
           versionSpec: '5.x'
           
-      - name: Determine Version
-        id: gitversion
-        uses: gittools/actions/gitversion/execute@v0.9.10
+      - name: Identify base branch
+        run: |
+          echo ${{github.base_ref}}
+          echo ${{github.event_name}}
+          echo ${{github.ref_name}}
+          
+#       - name: Determine Version
+#         id: gitversion
+#         uses: gittools/actions/gitversion/execute@v0.9.10
         
-      - name: Display GitVersion outputs
-        run: |
-          echo "Major: ${{ steps.gitversion.outputs.major }}"
-          echo "Minor: ${{ steps.gitversion.outputs.minor }}"
-          echo "Patch: ${{ steps.gitversion.outputs.patch }}"
-          echo "SemVer: ${{ steps.gitversion.outputs.semVer }}"
-          echo "FullSemVer: ${{ steps.gitversion.outputs.fullSemVer }}"
-          echo "BranchName: ${{ steps.gitversion.outputs.branchName }}"
-          echo "CommitDate: ${{ steps.gitversion.outputs.commitDate }}"
-      - name: Package Source
-        run: |
-          tar -czvf source.${{ steps.gitversion.outputs.fullSemVer }}.tar.gz ./*
+#       - name: Display GitVersion outputs
+#         run: |
+#           echo "Major: ${{ steps.gitversion.outputs.major }}"
+#           echo "Minor: ${{ steps.gitversion.outputs.minor }}"
+#           echo "Patch: ${{ steps.gitversion.outputs.patch }}"
+#           echo "SemVer: ${{ steps.gitversion.outputs.semVer }}"
+#           echo "FullSemVer: ${{ steps.gitversion.outputs.fullSemVer }}"
+#           echo "BranchName: ${{ steps.gitversion.outputs.branchName }}"
+#           echo "CommitDate: ${{ steps.gitversion.outputs.commitDate }}"
+#       - name: Package Source
+#         run: |
+#           tar -czvf source.${{ steps.gitversion.outputs.fullSemVer }}.tar.gz ./*
