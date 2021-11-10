@@ -21,7 +21,9 @@ jobs:
           
       - name: Identify base branch
         run: |
-          echo ${GITHUB_REF##*/}
+          echo ${github.base_ref}
+          echo ${github.event_name}
+          echo ${github.ref_name}
           
 #       - name: Determine Version
 #         id: gitversion
