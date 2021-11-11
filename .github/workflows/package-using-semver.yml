@@ -47,7 +47,7 @@ jobs:
       
       - name: Update commit comment
         run: |
-          echo ${{ github.event.head_commit.message }}
+          echo ${{ github.event.commits[0].message }}
 # github.repos.updateCommitComment({
 #             owner: context.repo.owner,
 #             repo: context.repo.repo,
