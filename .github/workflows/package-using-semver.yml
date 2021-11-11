@@ -29,7 +29,6 @@ jobs:
       - name: Run tests
         run: |
           echo tests!!
-          if fails, don't publish
           
           
       - name: Build the repo
