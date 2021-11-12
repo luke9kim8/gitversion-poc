@@ -21,8 +21,9 @@ jobs:
         run: |
           if [[ ${{github.head_ref}} =~ feature\/.* && ${{github.base_ref}} == dev ]]; then
             echo "Merging ${{github.head.ref}} to dev"
-            echo ${{ github.event.head_commit.message }}
-            echo ${{ github.head_ref.message }}
+            echo ${{ github.event.id }}
+            echo ${{ github.event.repo.name }}
+            echo ${{ github.event.payload }}
           else
             exit 1
           fi
