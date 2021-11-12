@@ -18,7 +18,7 @@ jobs:
         run: echo ${{ github.head_ref }} "->" ${{ github.base_ref }}
       
       - name: Merge feature to dev
-        if: github.base_ref == 'dev' && 1 == 2
+        if: 1 == 1 && github.base_ref == 'dev'
         run: |
           echo "Merging ${{github.head.ref}} to dev"
           
