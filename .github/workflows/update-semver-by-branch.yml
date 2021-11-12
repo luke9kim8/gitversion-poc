@@ -23,7 +23,6 @@ jobs:
             echo "Merging ${{github.head.ref}} to dev"
             echo ${{ github.event.pull_request.comments }} 
             echo ${{ github.event.pull_request.commits }} 
-   #          echo ${{ toJson(github.event.pull_request) }}
             echo ${{ toJson(github.event.pull_request.comments) }}
           else
             exit 1
