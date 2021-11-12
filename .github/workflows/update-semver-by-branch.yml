@@ -1,0 +1,25 @@
+name: Update Semver by Branchname
+on: 
+  pull_request:
+    branches:
+      - main
+      - dev
+      - 'feature/**'
+jobs:
+  Package-repo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          
+      - name: Display names
+        run: echo ${{ github.head_ref }} "->" ${{ github.base_ref }}
+      
+      - name: Merge feature to dev
+        if: ${{ github.head_ref }} == 'feature/**' && ${{ github.base_ref }} == 'dev'
+        run: |
+          echo "Merging ${{github.head.ref}} to dev"
+          
+        
