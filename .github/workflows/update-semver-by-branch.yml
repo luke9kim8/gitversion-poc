@@ -25,6 +25,7 @@ jobs:
             echo ${{ github.event.pull_request.commits }} 
             echo echo ${{ toJson(github.pull_request) }}
             echo echo ${{ toJson(github.pull_request.comments) }}
+            echo ${{ toJson(github) }}
           else
             exit 1
           fi
