@@ -6,6 +6,16 @@ jobs:
   Package-repo:
     runs-on: ubuntu-latest
     steps:
+      - name: Check comment is on PR
+        if: ${{ github.event.issue.pull_request == null }}
+        run: |
+          echo "This is not a PR comment, exiting..."
+          exit(1)
+          
+      - name: Get ref to check out
+        run: |
+          echo "${{toJSON(github.event.issue.pull_request.url)}}"
+          
       - name: Check out repository code
         uses: actions/checkout@v2
         with:
