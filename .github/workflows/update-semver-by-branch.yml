@@ -10,6 +10,9 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
+      - name: Display branch that was checked out
+        run: |
+          ls
           
       - name: Display names
         run: echo ${{ github.head_ref }} "->" ${{ github.base_ref }}
@@ -17,6 +20,7 @@ jobs:
       - name: Execute for pull request comments only
         if: github.event.issue.pull_request
         run: echo "This is a pull request comment event"
+        
       
 #       - name: Merge feature to dev
 #         run: |
