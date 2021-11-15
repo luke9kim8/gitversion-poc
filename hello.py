@@ -1,3 +1,3 @@
 print("hello")
-
-wefaweef
+print("world")
+print("yays")
