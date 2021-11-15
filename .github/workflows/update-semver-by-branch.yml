@@ -21,10 +21,8 @@ jobs:
         run: |
           if [[ ${{github.head_ref}} =~ feature\/.* && ${{github.base_ref}} == dev ]]; then
             echo "Merging ${{github.head.ref}} to dev"
-            echo ${{ github.event.commits }}
-            echo ${{ github.event.pull_request.comments }} 
-            echo ${{ github.event.pull_request.commits }} 
-            echo ${{ toJson(github.event.pull_request) }}
+            echo ${{ github.event.commits[0] }}
+            echo ${{ github.event.commits[0].message }}
           else
             exit 1
           fi
