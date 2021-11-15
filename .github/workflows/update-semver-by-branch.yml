@@ -22,17 +22,17 @@ jobs:
         if: github.event.issue.pull_request
         run: echo "This is a pull request comment event"
       
-      - name: Merge feature to dev
-        run: |
-          if [[ ${{github.head_ref}} =~ feature\/.* && ${{github.base_ref}} == dev ]]; then
-            echo "Merging ${{github.head.ref}} to dev"
-            echo ${{ github.event.commits }}
-            echo ${{ github.event.commits[0].message }}
-            echo ${{ toJSON(github.event.commits) }}
-            echo ${{ toJSON(github.event ) }}
-          else
-            exit 1
-          fi
+#       - name: Merge feature to dev
+#         run: |
+#           if [[ ${{github.head_ref}} =~ feature\/.* && ${{github.base_ref}} == dev ]]; then
+#             echo "Merging ${{github.head.ref}} to dev"
+#             echo ${{ github.event.commits }}
+#             echo ${{ github.event.commits[0].message }}
+#             echo ${{ toJSON(github.event.commits) }}
+#             echo ${{ toJSON(github.event ) }}
+#           else
+#             exit 1
+#           fi
           
           
         
