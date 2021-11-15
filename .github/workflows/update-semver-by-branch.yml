@@ -2,10 +2,6 @@ name: Update Semver by Branchname
 on: 
   issue_comment:
     types: [created]
-    branches:
-      - main
-      - dev
-      - 'feature/**'
 jobs:
   Package-repo:
     runs-on: ubuntu-latest
