@@ -13,7 +13,7 @@ jobs:
       - name: Display branch that was checked out
         run: |
           ls
-          echo ${github.event.issue}
+          echo ${{github.event.issue}}
           
       - name: Display names
         run: echo ${{ github.head_ref }} "->" ${{ github.base_ref }}
