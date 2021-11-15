@@ -47,24 +47,26 @@ jobs:
       
       - name: Update commit comment
         run: |
-          echo ${{ github.event.head_commit.message }}
+          echo ${{ github.head_commit }}
+          
 # github.repos.updateCommitComment({
 #             owner: context.repo.owner,
 #             repo: context.repo.repo,
 #           })
                     
           
-      - name: Create tag
-        uses: actions/github-script@v3
-        with:
-          github-token: ${{ github.token }}
-          script: |
-            github.git.createRef({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              ref: "refs/tags/${{ steps.gitversion.outputs.fullSemVer }}",
-              sha: context.sha
-            })
+#       - name: Create tag
+#         uses: actions/github-script@v3
+#         with:
+#           github-token: ${{ github.token }}
+#           script: |
+#             github.git.createRef({
+#               owner: context.repo.owner,
+#               repo: context.repo.repo,
+#               ref: "refs/tags/${{ steps.gitversion.outputs.fullSemVer }}",
+#               sha: context.sha
+#             })
+
           
       - name: Publish
         run: |
